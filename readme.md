@@ -13,6 +13,8 @@ The principle missing features are:
 
 * **In-line "plain text" citations:** many cite-while-you-write reference managers exist, with varying degrees of cumbersomeness and rigidity.  The SFM philosophy, following on the original Markdown philosophy, is that you should be able to write the citation more or less the way you would in an email, and the software should take care of formatting it the rest of the way.
 
+* **Internal reference support:** LaTeX style "\ref{}" referencing for sections and figures is missing from most markdown dialects
+
 ## Example
 
 The following is an illustrative example of the features I'm imagining:
