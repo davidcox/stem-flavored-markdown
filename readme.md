@@ -43,13 +43,12 @@ Wouldn't it be cool if we could just cite papers like you would in real life [Co
 
 Proposed figure syntax:
 
- ~~~.figure
+ ~~~figure
 ![test_figure](test.png)
 
 Its caption could occupy arbitrarily many paragraphs.
 
 And it could contain *formatting*.  Imagine that!
  ~~~
-
 
 ```
