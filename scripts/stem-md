@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+import sys
+import argparse
+
+parser = argparse.ArgumentParser(description='Convert a document in STEM-flavored Markdown')
+parser.add_argument('-v', '--version',
+                    help='print version and exit')
+
+parser.add_argument('-f', '--file',
+                    help='send output to file (default is stdout)')
+
+parser.add_argument('input_file', metavar='FILE', type=str, nargs='*',
+                    help='file to process')
+
+args = parser.parse_args()
+
+if args.version:
+    print "Version 0.1"
+    sys.exit(0)
+
+
+from stem_markdown import *
+
+renderer = SfmHtmlRenderer(HTML_USE_XHTML)
+
+parser = Markdown(renderer,
+                  EXT_FENCED_CODE | EXT_TABLES | EXT_AUTOLINK | EXT_STRIKETHROUGH |
+                  EXT_SUPERSCRIPT)
+
+
+input_string = ''
+if len(args.input_file) > 1:
+    raise Exception('Can only process one file at a time')
+
+if len(args.input_file):
+    with open(args.input_file[0], 'r') as f:
+        input_string = "\n".join(f.readlines())
+else:
+    input_string = "\n".join(sys.stdin.readlines())
+
+output_string = parser.render(input_string)
+
+if args.file is not None:
+    with open(args.file, 'w') as f:
+        f.write(output_string)
+else:
+    print(output_string)
