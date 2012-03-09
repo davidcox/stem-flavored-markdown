@@ -12,7 +12,7 @@ notes:
     ^: Contributed equally
 
 
-# This is a test of "STEM-flavored" markdown
+# This is a test of "STEM-flavored" markdown [@intro]
 
 Here is a paragraph la la la, blah dee blee dee bloo bloo. It can contain
 references to sections: [this-is-a-test].
@@ -22,7 +22,7 @@ Wouldn't it be cool if we could just cite papers like you would in real life [Co
 I'm going to try and put in a figure now:
 
 
-```
+~~~ figure
 
 ![](test.png)
 
@@ -30,10 +30,10 @@ Its caption could occupy arbitrarily many paragraphs.
 
 And it could contain *formatting*.  Imagine that!
 
-```
+~~~
 
 
-~~~.figure
+~~~ figure
 ![multipart1](test.png)
 ![multipart2](test.png)
 

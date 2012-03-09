@@ -19,36 +19,36 @@ The principle missing features are:
 
 The following is an illustrative example of the features I'm imagining:
 
-```markdown
+``` markdown
 
-title: A Test Document
-authors: David Cox (cox@rowland.harvard.edu) +,o,^
-		 John Doe (doe@rowland.harvard.edu) +,^
-institutions:
-	+: The Rowland Institute at Harvard
-	   100 Edwin H. Land Blvd.
-	   Cambridge, MA 02142
-	   http://www.rowland.harvard.edu
-	o: Planet Earth
-notes:
-	^: Contributed equally
+	title: A Test Document
+	authors: David Cox (cox@rowland.harvard.edu) +,o,^
+			 John Doe (doe@rowland.harvard.edu) +,^
+	institutions:
+		+: The Rowland Institute at Harvard
+		   100 Edwin H. Land Blvd.
+		   Cambridge, MA 02142
+		   http://www.rowland.harvard.edu
+		o: Planet Earth
+	notes:
+		^: Contributed equally
 
 
-# This is a test of "STEM-flavored" markdown
+	# This is a test of "STEM-flavored" markdown
 
-Here is a paragraph la la la, blah dee blee dee bloo bloo. It can contain
-references to sections: [this-is-a-test].
+	Here is a paragraph la la la, blah dee blee dee bloo bloo. It can contain
+	references to sections: [this-is-a-test].
 
-Wouldn't it be cool if we could just cite papers like you would in real life [Cox et al., 2011].  Ambiguous matches could be resolved via interactive queries (possibly even run lint-style in the editor) and "letter"-style citations [Cox et al., 2007b]
+	Wouldn't it be cool if we could just cite papers like you would in real life [Cox et al., 2011].  Ambiguous matches could be resolved via interactive queries (possibly even run lint-style in the editor) and "letter"-style citations [Cox et al., 2007b]
 
-Proposed figure syntax:
+	Proposed figure syntax:
 
- ~~~figure
-![test_figure](test.png)
+	~~~figure
+	![test_figure](test.png)
 
-Its caption could occupy arbitrarily many paragraphs.
+	Its caption could occupy arbitrarily many paragraphs.
 
-And it could contain *formatting*.  Imagine that!
- ~~~
+	And it could contain *formatting*.  Imagine that!
+	~~~
 
 ```
