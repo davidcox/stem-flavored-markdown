@@ -7,16 +7,17 @@ from misaka import (Markdown, BaseRenderer, HtmlRenderer, SmartyPants,
 import yaml
 
 
-class SfmPreprocessor(object):
+class SfmHtmlRenderer(HtmlRenderer):
 
-    def __init__(self, doc_info):
-        self.doc_info = doc_info
+    def __init__(self, flags):
+        HtmlRenderer.__init__(self, flags)
+        self.doc_info = {}
 
     def preprocess(self, text):
 
         # action items:
-        # 1. strip out yaml header info and parse it into self.doc_info
-        # 2. process internal links
+        # 1. strip out stem-md comments (start with an unescaped "%" char)
+        # 2. strip out yaml header info and parse it into self.doc_info
 
         # the YAML header ends with the first Markdown header element
         header_end = text.find('\n#')
@@ -25,27 +26,27 @@ class SfmPreprocessor(object):
 
         d = yaml.load(header)
         self.doc_info.update(d)
+        print(self.doc_info)
+
+        # 2. process internal link markers ("[@marker]")
+        # 3. add reference markers for section headers ("# Hello World" -> [hello-world]: ... )
+        # 4. preprocess in-line citations, match against bibliography
 
         return text
 
-
-class SfmHtmlRenderer(HtmlRenderer, SfmPreprocessor):
-
-    def __init__(self, flags):
-        self.doc_info = {}
-        HtmlRenderer.__init__(self, flags)
-        SfmPreprocessor.__init__(self, self.doc_info)
-        pass
-
     def block_code(self, text, lang):
 
-        if lang is "figure":
+        if lang == 'figure':
             #process figure block
             print("Found a figure!")
             return
 
         # pass through
         return HtmlRenderer.block_code(self, text, lang)
+
+    def link(self, link, title, content):
+        return "[Got: %s %s %s]" % (link, title, content)
+        # return HtmlRenderer.link(self, link, title, content)
 
     def doc_header(self):
         #s = '<!-- %s -->' % (self.doc_info)
